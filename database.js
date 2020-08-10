@@ -1,17 +1,10 @@
-const databaseFunction = () => {
-    const config = {};
-    const data = [{
-        title: 'New',
-        content: 'Content what you wanna'
-    }];
+const server = require('express')();
 
-    if (config.hasData) {
-        return data;
-    } else {
-        process.exit(1);
-    }
-}
+server.get('/db', (req, res) => {
+    const data = [{ title: 'New title a', content: 'Content new' }];
+    res.send(data);
+})
 
-module.exports = {
-    databaseFunction
-}
+server.listen(4000, () => {
+    console.log('Database connector running on port 4000');
+})
